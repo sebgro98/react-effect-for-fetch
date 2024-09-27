@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import UserList from "./components/UsersList";
 function UsersSection() {
   const [users, setUsers] = useState([]);
 
@@ -25,22 +25,7 @@ function UsersSection() {
     <section>
       <h2>Users Section</h2>
       <div className="scroll-container">
-        <ul className="users-list">
-          {users.map((user, index) => (
-            <li key={index} style={{ background: user.favouriteColour }}>
-              <img
-                src={`https://www.gravatar.com/avatar/${user.email}?s=120&d=identicon`}
-                alt={`${user.firstName} ${user.lastName}`}
-              />
-              <h3>
-                {` ${
-                  user.firstName
-                } ${user.lastName}`}
-              </h3>
-              <p>Email: {user.email}</p>
-            </li>
-          ))}
-        </ul>
+        <UserList userList={users}/>
       </div>
     </section>
   );

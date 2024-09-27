@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ArtList from "./components/ArtList";
+
+
 function ArtsSection() {
   const [art, setArt] = useState([]);
 
@@ -24,28 +27,7 @@ function ArtsSection() {
     <section>
       <h2>Arts Section</h2>
       <div className="scroll-container">
-        <ul className="art-list">
-          {art.map((art) => (
-            <li key={art.id}>
-              <div className="frame">
-              <img
-                src={`https://boolean-uk-api-server.fly.dev/${art.imageURL}`}
-              />
-              </div>
-              <h3>{` ${art.title}`}</h3>
-              <p>Artist: {art.artist}</p>
-              <ul>
-                {art.publicationHistory.map((publication, index) => (
-                    <li key={index}>
-                        {`${publication}`}
-                    </li>
-
-                ))}
-                
-              </ul>
-            </li>
-          ))}
-        </ul>
+         <ArtList artList={art}/>
       </div>
     </section>
   );
